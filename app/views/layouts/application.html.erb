@@ -6,9 +6,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <% if user_signed_in? %>
+      <div><%= link_to "Edit profile", edit_user_registration_path %></div>
+      <div><%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
+    <% else %>
+      <div><%= link_to "Sign up", new_user_registration_path %></div>
+      <div><%= link_to "Login", new_user_session_path %></div>
+    <% end %>
   </head>
 
   <body>
     <%= yield %>
+    <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class="notification is-danger global-notification">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
   </body>
 </html>
