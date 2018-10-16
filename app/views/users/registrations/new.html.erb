@@ -1,7 +1,9 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<% resource.build_location %>
+
+<%= form_for(:user, url: registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
 
   <div class="field">
     Select which solutions you'd like to try!<br>
@@ -32,13 +34,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :company_name %><br />
-    <%= f.text_field :company_name, autocomplete: "company_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autocomplete: "address" %>
+   <%= f.fields_for :location_attributes do |builder| %>
+    <%= builder.label :company_name %><br />
+    <%= builder.text_field :company_name %>
+    <p>
+    <%= builder.label :address %><br />
+    <%= builder.text_field :address %>
+  <%end%>
   </div>
 
   <div class="actions">

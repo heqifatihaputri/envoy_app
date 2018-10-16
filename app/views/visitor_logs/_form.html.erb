@@ -1,0 +1,42 @@
+<%= form_with(model: visitor_log, local: true) do |form| %>
+  <% if visitor_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(visitor_log.errors.count, "error") %> prohibited this visitor_log from being saved:</h2>
+
+      <ul>
+      <% visitor_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :location_name %>
+    <%= form.text_field :location_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purpose_of_visit %>
+    <%= form.text_area :purpose_of_visit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :your_email_address %>
+    <%= form.text_field :your_email_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :your_full_name %>
+    <%= form.text_field :your_full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :private_notes %>
+    <%= form.text_area :private_notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  # before_action :redirect_by_role
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+
   def after_sign_in_path_for(resource)
     case current_user.role.name
       when "deliveries"
@@ -9,13 +10,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def redirect_by_role
-  #   if current_user.present?
-  #     if current_user.role.name == "deliveries"
-  #       redirect_to "/dashboard/deliveries_dash"
-  #     else
-  #       redirect_to "/dashboard/visitors_dash"
-  #     end
-  #   end
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:location])
   # end
 end

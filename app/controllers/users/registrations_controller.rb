@@ -2,10 +2,12 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  # include ApplicationHelper
+
   private
 
   def sign_up_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, :company_name, :address)
+    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, location_attributes: [:id, :company_name, :address])
   end
 
   def account_update_params
@@ -16,7 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   super
+  #   @user = User.new
+  #   @user.locations.build
   # end
 
   # POST /resource
