@@ -9,6 +9,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   belongs_to :role, optional: true
-  belongs_to :location
-  accepts_nested_attributes_for :location
+  has_many :locations
+  accepts_nested_attributes_for :locations
 end

@@ -1,9 +1,7 @@
 <h2>Sign up</h2>
 
-<% resource.build_location %>
-
 <%= form_for(:user, url: registration_path(resource_name)) do |f| %>
-<%= devise_error_messages! %>
+
 
   <div class="field">
     Select which solutions you'd like to try!<br>
@@ -34,7 +32,7 @@
   </div>
 
   <div class="field">
-   <%= f.fields_for :location_attributes do |builder| %>
+   <%= f.fields_for Location.new do |builder| %>
     <%= builder.label :company_name %><br />
     <%= builder.text_field :company_name %>
     <p>

@@ -4,28 +4,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # include ApplicationHelper
 
-  private
-
-  def sign_up_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, location_attributes: [:id, :company_name, :address])
-  end
-
-  def account_update_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :current_password)
-  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   @user = User.new
-  #   @user.locations.build
-  # end
+  def new
+    @user = User.new
+    @location = @user.locations.build
+    # build_resource({})
+    # self.resource.locations = Location.new
+    # respond_with self.resource
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # @user = User.new(sign_up_params)
+
+    # # respond_to do |format|
+    # @user.save
+    # @location = @user.locations.create!
+    build_resource(sign_up_params)
+
+    if resource.save
+      @location = @user.locations.create!
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      end
+    else
+      # clean_up_passwords
+      respond_with resource
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -72,4 +86,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, {locations_attributes: [:id, :company_name, :address]})
+  end
+
+  def account_update_params
+    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :current_password)
+  end
 end
