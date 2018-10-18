@@ -32,13 +32,13 @@
   </div>
 
   <div class="field">
-   <%= f.fields_for Location.new do |builder| %>
-    <%= builder.label :company_name %><br />
-    <%= builder.text_field :company_name %>
-    <p>
-    <%= builder.label :address %><br />
-    <%= builder.text_field :address %>
-  <%end%>
+    <%= f.label :company_name %><br />
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
   </div>
 
   <div class="actions">

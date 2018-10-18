@@ -6,18 +6,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_permitted_parameters
 
   # GET /resource/sign_up
   def new
-    @user = User.new
-    @location = @user.locations.build
-    # build_resource({})
-    # self.resource.locations = Location.new
-    # respond_with self.resource
+    # @user = User.new
+    # @location = @user.locations.build
+    build_resource({})
+    respond_with resource
   end
 
   # POST /resource
   def create
+    # binding.pry
     # @user = User.new(sign_up_params)
 
     # # respond_to do |format|
@@ -26,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     if resource.save
-      @location = @user.locations.create!
+      # @location = @user.locations.create!
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
@@ -88,8 +89,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
 
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :email, :password, :password_confirmation, :role_id, locations_attributes: [:id, :company_name, :address]])
+    # devise_parameter_sanitizer.for(:sign_up) { |u|
+    #   u.permit(:full_name, :email, :password, :password_confirmation, :role_id, :location_attributes => [:id, :company_name, :address])
+    # }
+    # params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, location_attributes: [:id, :company_name, :address])
+  # end
+
   def sign_up_params
-    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, {locations_attributes: [:id, :company_name, :address]})
+    params.require(:user).permit(:full_name, :email, :password, :password_confirmation, :role_id, :company_name, :address)
   end
 
   def account_update_params

@@ -1,42 +1,64 @@
-<%= form_with(model: visitor_log, local: true) do |form| %>
-  <% if visitor_log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(visitor_log.errors.count, "error") %> prohibited this visitor_log from being saved:</h2>
+<div class="column">
+  <div class="column is-8 is-centered">
 
-      <ul>
-      <% visitor_log.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <%= simple_form_for @visitor_log, html: { multipart: true } do |f| %>
+      <% if visitor_log.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(visitor_log.errors.count, "error") %> prohibited this visitor_log from being saved:</h2>
+
+          <ul>
+          <% visitor_log.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :location_name %>
-    <%= form.text_field :location_name %>
-  </div>
+        <div class="columns">
+          
+          <div class="field column is-9">
+            <div class="control">
+              <%= f.label :purpose_of_visit %>
+              <%= f.select :purpose_of_visit, ['Visitor'], required: true, input_html: { class:"input" }, wrapper: false %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= form.label :purpose_of_visit %>
-    <%= form.text_area :purpose_of_visit %>
-  </div>
+          <div class="field column">
+            <div class="control">
+              <%= f.input :sign_in_time, required: true, input_html: { class:"input" }, wrapper: false  %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= form.label :your_email_address %>
-    <%= form.text_field :your_email_address %>
-  </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :your_full_name %>
-    <%= form.text_field :your_full_name %>
-  </div>
+        <div class="field">
+          <div class="control">
+            <%= f.input :your_full_name, required: true, input_html: { class:"input" }, wrapper: false %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :private_notes %>
-    <%= form.text_area :private_notes %>
-  </div>
+        <div class="field column is-9">
+            <div class="control">
+              <%= f.input :your_email_address, required: true, input_html: { class:"input" }, wrapper: false %>
+            </div>
+        </div>
 
-  <div class="actions">
-    <%= form.submit %>
+         <div class="field">
+          <div class="control">
+            <%= f.label :private_notes %><br />
+            <%= f.text_area :private_notes, required: true, input_html: { class:"input" }, wrapper: false %>
+          </div>
+        </div>
+
+        <output id="list"></output>
+      <hr />
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.button :submit, class: 'button is-warning' %>
+        </div>
+      </div>
+
+    <% end %>
   </div>
-<% end %>
+</div>

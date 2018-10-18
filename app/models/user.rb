@@ -11,4 +11,15 @@ class User < ApplicationRecord
   belongs_to :role, optional: true
   has_many :locations
   accepts_nested_attributes_for :locations
+
+  after_create :init_location
+
+  attr_accessor :address, :company_name
+
+  # def init_location locations.create(address: address, company_name: company_name)
+  # end
+
+  def init_location
+    locations.create(address: address,  company_name: company_name)
+  end
 end

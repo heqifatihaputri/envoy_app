@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_090549) do
+ActiveRecord::Schema.define(version: 2018_10_17_092430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 2018_10_16_090549) do
     t.text "private_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sign_in_time"
+    t.datetime "sign_out_time"
+    t.string "nda_pdf_url"
+    t.string "photo_url"
+    t.string "host"
+    t.integer "location_id"
   end
 
   add_foreign_key "users", "roles"
