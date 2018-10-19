@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location_id: 1
+  arrival: 2018-10-19 15:42:04
+  full_name: MyString
+  host: MyString
+  private_notes: MyText
+
+two:
+  location_id: 1
+  arrival: 2018-10-19 15:42:04
+  full_name: MyString
+  host: MyString
+  private_notes: MyText

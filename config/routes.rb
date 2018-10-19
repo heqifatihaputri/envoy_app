@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invites
   resources :employees
   resources :visitor_logs
   resources :locations
