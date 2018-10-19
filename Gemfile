@@ -26,6 +26,8 @@ gem 'devise'
 gem 'cancancan'
 gem "letter_opener", :group => :development
 gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

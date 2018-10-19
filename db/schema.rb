@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_092430) do
+ActiveRecord::Schema.define(version: 2018_10_19_012857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employees", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.integer "phone_number"
+    t.string "assistant_email"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "company_name"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_092430) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,7 +64,6 @@ ActiveRecord::Schema.define(version: 2018_10_17_092430) do
   end
 
   create_table "visitor_logs", force: :cascade do |t|
-    t.string "location_name"
     t.text "purpose_of_visit"
     t.string "your_email_address"
     t.string "your_full_name"
