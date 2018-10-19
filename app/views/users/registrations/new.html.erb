@@ -8,7 +8,10 @@
 
   <div class="field">
     Select which solutions you'd like to try!<br>
-    <%= f.collection_select :role_id, Role.order(:name), :id, :name, include_blank: false %>
+    <%= f.radio_button :role_id, 4, :checked => true %> 
+    <%= label :role_id, 'deliveries' %>
+    <%= f.radio_button :role_id, 5 %>
+    <%= label :role_id, 'visitors' %>
   </div>
 
   <div class="field">
