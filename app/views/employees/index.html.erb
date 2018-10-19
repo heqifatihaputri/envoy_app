@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Full name</th>
+      <th>Employee name</th>
       <th>Email</th>
       <th>Phone number</th>
       <th>Assistant email</th>
@@ -17,7 +17,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= employee.full_name %></td>
+        <td><%= employee.employee_name %></td>
         <td><%= employee.email %></td>
         <td><%= employee.phone_number %></td>
         <td><%= employee.assistant_email %></td>

@@ -17,7 +17,7 @@ class EmployeesTest < ApplicationSystemTestCase
     fill_in "Assistant Email", with: @employee.assistant_email
     fill_in "Deleted At", with: @employee.deleted_at
     fill_in "Email", with: @employee.email
-    fill_in "Full Name", with: @employee.full_name
+    fill_in "Employee Name", with: @employee.employee_name
     fill_in "Phone Number", with: @employee.phone_number
     click_on "Create Employee"
 
@@ -32,7 +32,7 @@ class EmployeesTest < ApplicationSystemTestCase
     fill_in "Assistant Email", with: @employee.assistant_email
     fill_in "Deleted At", with: @employee.deleted_at
     fill_in "Email", with: @employee.email
-    fill_in "Full Name", with: @employee.full_name
+    fill_in "Employee Name", with: @employee.employee_name
     fill_in "Phone Number", with: @employee.phone_number
     click_on "Update Employee"
 
