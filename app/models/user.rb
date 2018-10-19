@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :locations
   accepts_nested_attributes_for :locations
 
-  after_create :init_location
+  after_create :init_location, :init_employee
 
   attr_accessor :address, :company_name
 
@@ -21,5 +21,9 @@ class User < ApplicationRecord
 
   def init_location
     locations.create(address: address,  company_name: company_name)
+  end
+
+  def init_employee
+    Employee.create(full_name: full_name, email: email)
   end
 end

@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  employee_name: MyString
+  name: MyString
   email: MyString
   phone_number: 1
   assistant_email: MyString
   deleted_at: 2018-10-19 08:35:16
 
 two:
-  employee_name: MyString
+  name: MyString
   email: MyString
   phone_number: 1
   assistant_email: MyString
