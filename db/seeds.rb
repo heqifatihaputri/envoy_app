@@ -8,6 +8,6 @@
 
 Role.delete_all
 
-['visitors', 'deliveries'].each do |role|
+['Global Admin', 'Location Admin', 'Front Desk Admin', 'Security Admin', 'Billing Admin', 'Employee'].each do |role|
   Role.find_or_create_by({name: role})
 end

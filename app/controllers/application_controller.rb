@@ -3,10 +3,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     case current_user.role.name
-      when "deliveries"
+      when "Global Admin"
       deliveries_dash_path
-      when "visitors"
-      visitors_dash_path
     end
   end
 

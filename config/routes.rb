@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   get 'visitors_dash' => 'dashboard#visitors_dash'
   get 'deliveries_dash' => 'dashboard#deliveries_dash'
+  post 'bulk_invites' => 'invites#bulk_invites'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

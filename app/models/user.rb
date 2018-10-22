@@ -14,16 +14,21 @@ class User < ApplicationRecord
 
   after_create :init_location, :init_employee
 
-  attr_accessor :address, :company_name
+  before_create :set_default_role
 
-  # def init_location locations.create(address: address, company_name: company_name)
-  # end
+  attr_accessor :address, :company_name, :location_name
 
   def init_location
-    locations.create(address: address,  company_name: company_name)
+    locations.create(address: address,  company_name: company_name, location_name: location_name)
   end
 
   def init_employee
     Employee.create(full_name: full_name, email: email)
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= Role.find_by_name('Global Admin')
   end
 end

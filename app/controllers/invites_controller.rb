@@ -61,6 +61,11 @@ class InvitesController < ApplicationController
     end
   end
 
+  def bulk_invites
+    @invite = Invite.new
+    10.times { @invite.build }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invite
