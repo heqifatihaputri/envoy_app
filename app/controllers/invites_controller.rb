@@ -4,7 +4,11 @@ class InvitesController < ApplicationController
   # GET /invites
   # GET /invites.json
   def index
-    @invites = Invite.all
+    @invites = if params[:search]
+      Invite.search_by_full_name(params[:search])
+    else
+      Invite.all
+    end
   end
 
   # GET /invites/1
@@ -74,6 +78,6 @@ class InvitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invite_params
-      params.require(:invite).permit(:location_id, :arrival, :full_name, :host, :private_notes)
+      params.require(:invite).permit(:location_id, :arrival, :full_name, :host, :private_notes, :email_visitor)
     end
 end

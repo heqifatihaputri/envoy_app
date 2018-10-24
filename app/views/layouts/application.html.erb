@@ -26,8 +26,10 @@
               <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <% current_user.locations.each do |location| %>
-                    <li><%= link_to location.company_name %></li>
+                  <% if user_signed_in? %>
+                    <% current_user.locations.each do |location| %>
+                      <li><%= link_to location.company_name, visitor_logs_path %></li>
+                    <% end %>
                   <% end %>
                 </ul>
               </li>
@@ -50,28 +52,13 @@
         </div>
       </div>
     </nav>
-    <!-- <div class="sidenav">
-      <a href="#about">About</a>
-      <button class="dropdown-btn">Visitor 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-      <a href="#services">Deliveries</a>
-      <button class="dropdown-btn">Employee directory 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-      <a href="#contact">Integration</a>
-      <a href="#contact">Seup guide</a>
-    </div> -->
+    <div class="sidenav">
+        <li><%= link_to "Visitor Log", visitor_logs_path %></li>
+        <li><%= link_to "Visitor Log", visitor_logs_path %></li>
+        <li><%= link_to "Invites", invites_path %></li>
+        <li><%= link_to "Devise", invites_path %></li>
+        <li><%= link_to "Settings", invites_path %></li>
+    </div>
     <div id="main-container" class="container">
     <%= yield %>
     <% if flash[:notice] %>

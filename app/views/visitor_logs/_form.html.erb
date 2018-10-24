@@ -1,72 +1,74 @@
-<div class="column">
-  <div class="column is-8 is-centered">
+<div class="wrapper">
+  <div class="column">
+    <div class="column is-8 is-centered">
 
-    <%= simple_form_for @visitor_log, html: { multipart: true } do |f| %>
-      <% if visitor_log.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(visitor_log.errors.count, "error") %> prohibited this visitor_log from being saved:</h2>
+      <%= simple_form_for @visitor_log, html: { multipart: true } do |f| %>
+        <% if visitor_log.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(visitor_log.errors.count, "error") %> prohibited this visitor_log from being saved:</h2>
 
-          <ul>
-          <% visitor_log.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+            <ul>
+            <% visitor_log.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-        <div class="columns">
-          
-          <div class="field column is-9">
+          <div class="columns">
+            
+            <div class="field column is-9">
+
+            <div class="field">
+              <div class="control">
+                <%= f.label :location_id %>
+                <%= f.collection_select :location_id, Location.order(:company_name), :id, :company_name %>
+              </div>
+            </div>
+
+            <div class="control">
+              <%= f.label :purpose_of_visit %>
+              <%= f.select :purpose_of_visit, ['Visitor'], required: true, input_html: { class:"input" }, wrapper: false %>
+            </div>
+          </div>
+
+            <div class="field column">
+              <div class="control">
+                <%= f.input :sign_in_time, required: true, input_html: { class:"input" }, wrapper: false  %>
+              </div>
+            </div>
+
+          </div>
 
           <div class="field">
             <div class="control">
-              <%= f.label :location_id %>
-              <%= f.collection_select :location_id, Location.order(:company_name), :id, :company_name %>
+              <%= f.input :your_full_name, required: true, input_html: { class:"input" }, wrapper: false %>
             </div>
           </div>
 
-          <div class="control">
-            <%= f.label :purpose_of_visit %>
-            <%= f.select :purpose_of_visit, ['Visitor'], required: true, input_html: { class:"input" }, wrapper: false %>
+          <div class="field column is-9">
+              <div class="control">
+                <%= f.input :your_email_address, required: true, input_html: { class:"input" }, wrapper: false %>
+              </div>
           </div>
-        </div>
 
-          <div class="field column">
+           <div class="field">
             <div class="control">
-              <%= f.input :sign_in_time, required: true, input_html: { class:"input" }, wrapper: false  %>
+              <%= f.label :private_notes %><br />
+              <%= f.text_area :private_notes, required: true, input_html: { class:"input" }, wrapper: false %>
             </div>
           </div>
 
-        </div>
+          <output id="list"></output>
+        <hr />
 
-        <div class="field">
+        <div class="field is-grouped">
           <div class="control">
-            <%= f.input :your_full_name, required: true, input_html: { class:"input" }, wrapper: false %>
+            <%= f.button :submit, class: 'button is-warning' %>
           </div>
         </div>
 
-        <div class="field column is-9">
-            <div class="control">
-              <%= f.input :your_email_address, required: true, input_html: { class:"input" }, wrapper: false %>
-            </div>
-        </div>
-
-         <div class="field">
-          <div class="control">
-            <%= f.label :private_notes %><br />
-            <%= f.text_area :private_notes, required: true, input_html: { class:"input" }, wrapper: false %>
-          </div>
-        </div>
-
-        <output id="list"></output>
-      <hr />
-
-      <div class="field is-grouped">
-        <div class="control">
-          <%= f.button :submit, class: 'button is-warning' %>
-        </div>
-      </div>
-
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

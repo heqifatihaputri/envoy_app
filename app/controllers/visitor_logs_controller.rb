@@ -5,7 +5,11 @@ class VisitorLogsController < ApplicationController
   # GET /visitor_logs
   # GET /visitor_logs.json
   def index
-    @visitor_logs = VisitorLog.all
+    @visitor_logs = if params[:search]
+      VisitorLog.search_by_full_name(params[:search])
+    else
+      VisitorLog.all
+    end
   end
 
   # GET /visitor_logs/1

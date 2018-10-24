@@ -1,0 +1,29 @@
+<%= simple_form_for(@invite) do |f| %>
+ <div class="field">
+    <%= f.label :location_id %>
+    <%= f.collection_select :location_id, current_user.locations.order(:company_name), :id, :company_name, include_blank: false %>
+  </div>
+
+   <div class="field">
+    <%= f.input :arrival %>
+  </div>
+
+  <div class="field">
+    <%= f.input :full_name %>
+  </div>
+
+  <div class="field">
+    <%= f.input :email_visitor %>
+  </div>
+
+   <div class="field">
+    <%= f.label :host %>
+    <%= f.collection_select :host, User.order(:full_name), :id, :full_name, include_blank: false %>
+  </div>
+
+   <div class="field">
+    <%= f.input :private_notes %>
+
+    <%= link_to "remove address" %>
+  </div>
+  <% end %>

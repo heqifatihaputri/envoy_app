@@ -1,11 +1,22 @@
+<div class="wrapper">
 <p id="notice"><%= notice %></p>
 
 <h1>Visitor Logs</h1>
 
+<div>
+  <%= form_tag visitor_logs_path, :method => 'get' do %>
+  <%= label_tag(:search, "") %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "Searching Visitor" %>
+      <%= submit_tag "Search", :name => nil %>
+    </p><br>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>
-      <th>Location name</th>
+      <th>Location</th>
       <th>Purpose of visit</th>
       <th>Your email address</th>
       <th>Your full name</th>
@@ -17,7 +28,7 @@
   <tbody>
     <% @visitor_logs.each do |visitor_log| %>
       <tr>
-        <td><%= visitor_log.location_name %></td>
+        <td><%= visitor_log.location_id %></td>
         <td><%= visitor_log.purpose_of_visit %></td>
         <td><%= visitor_log.your_email_address %></td>
         <td><%= visitor_log.your_full_name %></td>
@@ -33,3 +44,4 @@
 <br>
 
 <%= link_to 'New Visitor Log', new_visitor_log_path %>
+</div>
