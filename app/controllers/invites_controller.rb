@@ -6,8 +6,10 @@ class InvitesController < ApplicationController
   def index
     @invites = if params[:search]
       Invite.search_by_full_name(params[:search])
+    elsif params[:date]
+      Invite.search_by_date(params[:date])
     else
-      Invite.all
+      Invite.where(arrival: Date.today.all_day)
     end
   end
 

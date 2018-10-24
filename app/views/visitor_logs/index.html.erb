@@ -13,6 +13,16 @@
   <% end %>
 </div>
 
+<div class="search-date">
+  <%= form_tag visitor_logs_path, :method => 'get' do %>
+  <%= label_tag(:date, "") %>
+    <p>
+      <%= date_field_tag :date, params[:date] %>
+      <%= submit_tag "Submit" %>
+    </p><br>
+  <% end %>
+</div>
+
 <table>
   <thead>
     <tr>

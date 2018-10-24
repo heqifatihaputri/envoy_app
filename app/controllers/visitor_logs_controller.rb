@@ -7,8 +7,10 @@ class VisitorLogsController < ApplicationController
   def index
     @visitor_logs = if params[:search]
       VisitorLog.search_by_full_name(params[:search])
+    elsif params[:date]
+      VisitorLog.search_by_date(params[:date])
     else
-      VisitorLog.all
+      VisitorLog.where(created_at: Date.today.all_day)
     end
   end
 

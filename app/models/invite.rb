@@ -8,4 +8,7 @@ class Invite < ApplicationRecord
         prefix: true
       }
     }
+
+  pg_search_scope :search_by_date, against: [:arrival]
 end
+

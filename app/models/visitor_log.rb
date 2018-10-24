@@ -8,4 +8,6 @@ class VisitorLog < ApplicationRecord
         prefix: true
       }
     }
+
+  pg_search_scope :search_by_date, against: [:created_at]
 end
