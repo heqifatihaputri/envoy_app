@@ -5,9 +5,8 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    if user.role.name.eql?  "Global Admin"
-      can :manage, :all
-    elsif user.role.name.eql? 'Location Admin'
+    if user.role.name
+      when "Global Admin"
       can :manage, :all
     else
       can :read, :all
