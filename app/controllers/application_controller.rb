@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case current_user.role.name
       when "Global Admin"
-      deliveries_dash_path
+        deliveries_dash_path
+      else
+        root_path
     end
   end
 
