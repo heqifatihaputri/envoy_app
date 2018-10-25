@@ -4,6 +4,6 @@ class DashboardController < ApplicationController
   def index
   end
 
-  def deliveries_dash
+  def global_admin_dash
   end
 end

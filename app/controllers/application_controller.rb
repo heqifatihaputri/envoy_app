@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if @user.role.name.include?('Global Admin')
-      root_path
+      global_admin_dash_path
     else
       root_path
     end
