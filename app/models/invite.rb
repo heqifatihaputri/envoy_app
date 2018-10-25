@@ -10,5 +10,17 @@ class Invite < ApplicationRecord
     }
 
   pg_search_scope :search_by_date, against: [:arrival]
+
+  def sign_in
+     self.signed_in = true
+     self.sign_in_time = Time.now
+     self.save!
+  end
+
+  def sign_out
+     self.signed_in = false
+     self.save!
+  end
+
 end
 
