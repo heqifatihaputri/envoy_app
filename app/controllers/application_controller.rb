@@ -2,11 +2,10 @@ class ApplicationController < ActionController::Base
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    case current_user.role.name
-      when "Global Admin"
-        root_path
-      else
-        root_path
+    if @user.role.name.include?('Global Admin')
+      deliveries_dash_path
+    else
+      root_path
     end
   end
 
