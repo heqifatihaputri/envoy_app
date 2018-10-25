@@ -67,7 +67,7 @@ td {
 
 /* Style the sidenav links and the dropdown button */
 .sidenav a, .dropdown-btn {
-  padding: 0px 8px 6px 16px;
+  padding: 0px 5px 2px 16px;
   text-decoration: none;
   font-size: 20px;
   color: #818181;
@@ -78,7 +78,7 @@ td {
   text-align: left;
   cursor: pointer;
   outline: none;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 /* On mouse-over */
@@ -121,7 +121,11 @@ td {
   margin-left: -225px;
 }
 
-.search-date {
+.search {
   margin-left: 802px;
-  margin-top: -87px;
+  margin-top: -70px;
+}
+
+.navbar-fixed-top {
+  z-index: 1;
 }

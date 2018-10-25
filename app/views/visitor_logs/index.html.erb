@@ -3,7 +3,7 @@
 
 <h1>Visitor Logs</h1>
 
-<div>
+<div class="search">
   <%= form_tag visitor_logs_path, :method => 'get' do %>
   <%= label_tag(:search, "") %>
     <p>
@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-<div class="search-date">
+<div>
   <%= form_tag visitor_logs_path, :method => 'get' do %>
   <%= label_tag(:date, "") %>
     <p>
