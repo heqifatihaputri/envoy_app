@@ -46,10 +46,13 @@
           <% if invite.signed_in? %>
             <%= invite.sign_in_time.strftime("%e %b %Y %H:%M:%S%p") %>
           <% else %>
-            <%= link_to 'Sign In', invite_signed_in_path(invite), method: :put  %>
+            Not yet
+            <td><%= link_to 'Sign In', invite_signed_in_path(invite), method: :put  %>
+                <%= link_to 'Delete Visitor', invite, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
           <% end %>
         </td>
-        <td><%= link_to 'Delete Visitor', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>
