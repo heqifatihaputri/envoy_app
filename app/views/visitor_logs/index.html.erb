@@ -23,7 +23,11 @@
   <% end %>
 </div>
 
-<table>
+<div class="export_button">
+  <%= button_to 'Export' %>
+</div>
+
+<table width="100%">
   <thead>
     <tr>
       <th>Your email address</th>
@@ -42,7 +46,7 @@
         <td><%= visitor_log.your_full_name %></td>
         <td><%= visitor_log.private_notes %></td>
         <td><%= visitor_log.sign_in_time.strftime("%e %b %Y %H:%M:%S%p") %></td>
-        <td><%= visitor_log.sign_out_time.strftime("%e %b %Y %H:%M:%S%p") %></td>
+        <td><%= visitor_log.sign_out_time %></td>
         <td>
           <% if visitor_log.signed_out? == false %>
             <%= link_to 'Sign Out', visitor_log_signed_out_path(visitor_log), method: :put   %></td>
