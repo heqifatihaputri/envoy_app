@@ -27,14 +27,15 @@
             </div>
 
             <div class="control">
-              <%= f.label :purpose_of_visit %>
+              <%= f.label "Visitor Type" %>
               <%= f.select :purpose_of_visit, ['Visitor'], required: true, input_html: { class:"input" }, wrapper: false %>
             </div>
           </div>
 
             <div class="field column">
               <div class="control">
-                <%= f.input :sign_in_time, required: true, input_html: { class:"input" }, wrapper: false  %>
+                <%= f.label "Arrival Date" %>
+                <%= f.datetime_select :sign_in_time, required: true, input_html: { class:"input" }, wrapper: false  %>
               </div>
             </div>
 
@@ -47,9 +48,14 @@
           </div>
 
           <div class="field column is-9">
-              <div class="control">
-                <%= f.input :your_email_address, required: true, input_html: { class:"input" }, wrapper: false %>
-              </div>
+            <div class="control">
+              <%= f.input :your_email_address, required: true, input_html: { class:"input" }, wrapper: false %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :host %>
+            <%= f.collection_select :host, User.order(:full_name), :id, :full_name, include_blank: false %>
           </div>
 
            <div class="field">

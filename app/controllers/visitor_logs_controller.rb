@@ -1,5 +1,5 @@
 class VisitorLogsController < ApplicationController
-  before_action :set_visitor_log, only: [:show, :edit, :update, :destroy]
+  before_action :set_visitor_log, only: [:show, :edit, :update, :destroy, :signed_in, :signed_out]
   before_action :authenticate_user!
 
   # GET /visitor_logs
@@ -68,10 +68,16 @@ class VisitorLogsController < ApplicationController
     end
   end
 
+  def signed_out
+   @visitor_log.sign_out
+   redirect_to visitor_logs_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_visitor_log
-      @visitor_log = VisitorLog.find(params[:id])
+      id = params[:id].present? ? (params[:id]) : (params[:visitor_log_id])
+      @visitor_log = VisitorLog.find(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -20,7 +20,7 @@
       <%= f.input :email_visitor %>
     </div>
 
-     <div class="field">
+    <div class="field">
       <%= f.label :host %>
       <%= f.collection_select :host, User.order(:full_name), :id, :full_name, include_blank: false %>
     </div>

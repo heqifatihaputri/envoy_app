@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_091913) do
+ActiveRecord::Schema.define(version: 2018_10_25_061505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2018_10_24_091913) do
     t.string "photo_url"
     t.string "host"
     t.integer "location_id"
+    t.boolean "signed_in", default: false
+    t.boolean "signed_out", default: false
   end
 
 end

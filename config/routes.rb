@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :invites do 
-      put 'signed_in' => 'invites#signed_in'
+    put 'signed_in' => 'invites#signed_in'
+  end
 
-  end 
   resources :employees
-  resources :visitor_logs
+  resources :visitor_logs do
+    put 'signed_out' => 'visitor_logs#signed_out'
+  end
   resources :locations
   devise_for :users, controllers: {
       sessions:           "users/sessions",

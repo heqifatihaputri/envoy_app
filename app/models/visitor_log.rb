@@ -10,4 +10,10 @@ class VisitorLog < ApplicationRecord
     }
 
   pg_search_scope :search_by_date, against: [:created_at]
+
+  def sign_out
+    self.signed_out = true
+    self.sign_out_time = Time.now
+    self.save!
+  end
 end
